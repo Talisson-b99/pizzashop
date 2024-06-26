@@ -2,6 +2,7 @@ import { Home, Pizza, UtensilsCrossed } from 'lucide-react'
 
 import { Separator } from '@/components/ui/separator'
 
+import AccountMenu from './account-menu'
 import NavLink from './nav-link'
 import ThemeToggle from './theme/theme-toggle'
 
@@ -26,6 +27,7 @@ const Header = () => {
 
         <div className="items-cente ml-auto flex gap-2">
           <ThemeToggle />
+          <AccountMenu />
         </div>
       </div>
     </div>
