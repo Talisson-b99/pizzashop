@@ -47,7 +47,7 @@ const SignIn = () => {
         },
       })
     } catch (error) {
-      toast.error('Creddenciasi inválidas')
+      toast.error('Credenciais inválidas')
     }
   }
 
