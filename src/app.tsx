@@ -11,7 +11,7 @@ function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="@pizzashop-theme">
       <HelmetProvider>
-        <Toaster richColors position="top-right" />
+        <Toaster richColors position="bottom-right" />
         <Helmet titleTemplate="%s | pizza.shop" />
         <QueryClientProvider client={queryClient}>
           <RouterProvider router={Router} />
