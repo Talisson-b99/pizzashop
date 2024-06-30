@@ -15,7 +15,7 @@ const OrderStatus = ({ status }: OrderProps) => {
         <span className="size-2 rounded-full bg-rose-500"></span>
       )}
 
-      {status === 'delivering' && (
+      {status === 'delivered' && (
         <span className="size-2 rounded-full bg-emerald-500"></span>
       )}
 
