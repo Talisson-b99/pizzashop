@@ -1,12 +1,28 @@
+import { formatDistanceToNow } from 'date-fns'
+import { ptBR } from 'date-fns/locale'
 import { ArrowRight, Search, X } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogTrigger } from '@/components/ui/dialog'
 import { TableCell, TableRow } from '@/components/ui/table'
+import { formatCurrency } from '@/utils/format-currency'
 
 import OrderDetails from './order-details'
+import OrderStatus from './order-status'
 
-const OrderTableRow = () => {
+interface OrderTableRowProps {
+  order: {
+    orderId: string
+    createdAt: string
+    status: 'pending' | 'canceled' | 'processing' | 'delivering' | 'delivered'
+    customerName: string
+    total: number
+  }
+}
+
+const OrderTableRow = ({ order }: OrderTableRowProps) => {
+  const { createdAt, customerName, orderId, status, total } = order
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -18,22 +34,19 @@ const OrderTableRow = () => {
             </Button>
           </TableCell>
           <TableCell className="font-mono text-xs font-medium">
-            jdaklçfcjakl
+            {orderId}
           </TableCell>
           <TableCell className="text-muted-foreground">
-            {' '}
-            há 15 minutos
+            {formatDistanceToNow(createdAt, {
+              locale: ptBR,
+              addSuffix: true,
+            })}
           </TableCell>
           <TableCell>
-            <div className="flex items-center gap-2">
-              <span className="size-2 rounded-full bg-slate-400"></span>
-              <span className="font-medium text-muted-foreground">
-                Pendente
-              </span>
-            </div>
+            <OrderStatus status={status} />
           </TableCell>
-          <TableCell className="font-medium">Talisson barbosa</TableCell>
-          <TableCell className="font-medium">R$ 149,90</TableCell>
+          <TableCell className="font-medium">{customerName}</TableCell>
+          <TableCell className="font-medium">{formatCurrency(total)}</TableCell>
           <TableCell>
             <Button variant="outline" size="sm">
               <ArrowRight className="mr-2 size-3" />
