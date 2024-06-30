@@ -1,6 +1,6 @@
 import { getStatus } from '@/utils/get-status'
 
-interface OrderProps {
+export interface OrderProps {
   status: 'pending' | 'canceled' | 'processing' | 'delivering' | 'delivered'
 }
 
